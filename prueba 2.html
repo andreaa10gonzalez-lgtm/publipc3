@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GANAMOS • Reclamá tu bono al instante</title>
+  <meta name="description" content="Escribinos por WhatsApp y obtené tu bono instantáneo. Pagos al instante y retiros sin límite.">
+  <meta name="theme-color" content="#8e2de2">
+  <meta property="og:title" content="GANAMOS • Reclamá tu bono al instante">
+  <meta property="og:description" content="Escribinos por WhatsApp y obtené tu bono al instante. Pagos al instante y retiros sin límite.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="casino.jpg">
+  <link rel="icon" href="favicon.png">
+  <style>
+    :root {
+      --text: #fff;
+      --muted: #d0d0d0;
+      --accent: #ff00ff;
+      --btnA: #a020f0;
+      --btnB: #8000d0;
+      --success: #6dda14;
+      --bgCard: rgba(0, 0, 0, 0.75);
+      --overlay: rgba(0,0,0,.7);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+      color: var(--text);
+      background: url("casino.jpg") center/cover no-repeat fixed;
+      text-align: center;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+
+    .card {
+      background: var(--bgCard);
+      border-radius: 20px;
+      padding: 28px 22px;
+      max-width: 500px;
+      width: min(92vw, 500px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      backdrop-filter: blur(15px);
+    }
+
+    .logo-text {
+      font-size: clamp(30px, 6vw, 52px);
+      font-weight: 900;
+      margin-bottom: 18px;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.7);
+    }
+
+    .pill { background: rgba(255,255,255,0.1); border-radius: 999px; padding: 4px 12px; font-weight: 700; display: inline-block; margin-bottom: 12px; }
+
+    h1 { color: var(--accent); font-size: clamp(20px, 4vw, 28px); margin-bottom: 16px; text-transform: uppercase; }
+
+    .bonus { font-size: clamp(18px, 4.6vw, 24px); color: var(--success); margin-bottom: 16px; text-shadow: 0 3px 8px rgba(0,0,0,0.6); }
+    .pre-msg { font-size: 15px; color: var(--muted); margin-bottom: 12px; }
+
+    .cta {
+      position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 15px 24px; border-radius: 999px; background: linear-gradient(180deg, var(--btnA), var(--btnB));
+      color: #fff; font-weight: 800; text-decoration: none; box-shadow: 0 8px 28px rgba(128,0,208,0.6);
+      transition: transform .1s ease, filter .15s ease; animation: pulse 2.2s infinite;
+    }
+    .cta:hover { transform: scale(1.04); filter: brightness(1.1); }
+    .cta img { width: 22px; height: 22px; }
+
+    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+
+    .footer { margin-top: 18px; font-size: 14px; font-weight: 700; color: var(--muted); }
+
+    /* Botón flotante (siempre visible) */
+    .cta-floating { position: fixed; bottom: 18px; right: 18px; background: linear-gradient(180deg, var(--btnA), var(--btnB)); padding: 13px 20px; border-radius: 999px; font-weight: 800; color: #fff; box-shadow: 0 0 20px rgba(160,0,240,0.6); z-index: 999; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+    .cta-floating img { width: 20px; height: 20px; }
+
+    .cta-floating:focus-visible, .cta:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+    /* Exit intent modal */
+    .modal-overlay { position: fixed; inset: 0; background: var(--overlay); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 20px; }
+    .modal { background: var(--bgCard); width: min(92vw, 520px); border-radius: 20px; padding: 22px 18px; box-shadow: 0 20px 60px rgba(0,0,0,.6); text-align: left; }
+    .modal header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+    .modal h2 { font-size: clamp(18px, 4.2vw, 24px); color: var(--accent); }
+    .modal p { color: var(--muted); margin: 10px 0 14px; }
+    .modal .modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-secondary { border-radius: 999px; padding: 12px 18px; background: rgba(255,255,255,.12); color:#fff; text-decoration: none; font-weight: 700; }
+    .btn-close { background: transparent; color: #fff; border: none; font-size: 22px; line-height: 1; cursor: pointer; padding: 6px; border-radius: 10px; }
+    .btn-close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+    @media (prefers-reduced-motion: reduce) { .cta, .cta-floating { animation: none; } }
+  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1303948534558420');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1303948534558420&ev=PageView&noscript=1" />
+  </noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+<body>
+  <main class="card" role="main">
+    <div class="logo-text">GANAMOS.NET</div>
+    <p class="pill">🔥 PROMO LIMITADA 🔥</p>
+    <h1>Reclamá tu bono al instante</h1>
+    <p class="bonus">🎁 ¡Solo quedan <span id="contador">10</span> bonos disponibles hoy!</p>
+    <p class="pre-msg">Enviá <strong>“QUIERO GANAR”</strong> y activá tu premio ahora.</p>
+
+    <!-- CTA principal -->
+    <a id="whatsapp-btn" class="cta" href="https://wa.me/541169614630?text=QUIERO%20GANAR&utm_source=landing&utm_medium=cta&utm_campaign=bono_instantaneo" target="_blank" rel="noopener" aria-label="Reclamar bono al instante por WhatsApp">
+      💬 Reclamar bono al instante
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="" aria-hidden="true">
+    </a>
+
+    <p class="footer">🎰 RULETA EN VIVO • SLOTS • APUESTAS 🎯</p>
+  </main>
+
+  <!-- CTA flotante -->
+  <a id="whatsapp-float" class="cta-floating" href="https://wa.me/541169614630?text=QUIERO%20GANAR&utm_source=landing_float&utm_medium=cta&utm_campaign=bono_instantaneo" target="_blank" rel="noopener" aria-label="Abrir WhatsApp para reclamar el bono">
+    💬 Ganá ahora
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="" aria-hidden="true">
+  </a>
+
+  <!-- Modal de salida (exit intent) -->
+  <div id="exit-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="exit-title" aria-hidden="true">
+    <div class="modal" role="document">
+      <header>
+        <h2 id="exit-title">Antes de irte… ¿te guardo el bono?</h2>
+        <button id="exit-close" class="btn-close" aria-label="Cerrar">✕</button>
+      </header>
+      <p>Escribinos por WhatsApp y te activamos <strong>el bono al instante</strong>. No perdés tu lugar en la promo.</p>
+      <div class="modal-actions">
+        <a id="exit-cta" class="cta" href="https://wa.me/541169614630?text=QUIERO%20GANAR&utm_source=exit_modal&utm_medium=cta&utm_campaign=bono_instantaneo&utm_content=salida" target="_blank" rel="noopener">💬 Activar bono por WhatsApp</a>
+        <button id="exit-keep" class="btn-secondary" type="button">Seguir navegando</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Utilidad para seguimiento ligero
+    function track(event, meta){
+      try { navigator.sendBeacon('/track', JSON.stringify({event, meta, ts: Date.now()})); } catch(e){}
+    }
+
+    // Contador de urgencia
+    (function(){
+      const el = document.getElementById('contador');
+      let num = parseInt(el.textContent, 10) || 10;
+      setInterval(() => { if (num > 3) { num--; el.textContent = num; } }, 7000);
+    })();
+
+    // Wire tracking a CTAs
+    function wireClickTracking(id, label){
+      const btn = document.getElementById(id);
+      if(!btn) return;
+      btn.addEventListener('click', () => track('click_whatsapp', {source: label}));
+    }
+    wireClickTracking('whatsapp-btn', 'hero');
+    wireClickTracking('whatsapp-float', 'float');
+
+    // Exit intent modal (solo una vez por sesión)
+    (function(){
+      const overlay = document.getElementById('exit-overlay');
+      const closeBtn = document.getElementById('exit-close');
+      const keepBtn  = document.getElementById('exit-keep');
+      const exitCta  = document.getElementById('exit-cta');
+      const STORAGE_KEY = 'exit_modal_shown_v1';
+
+      function openModal(){
+        if(overlay.getAttribute('aria-hidden') === 'false') return; // ya abierto
+        overlay.style.display = 'flex';
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        track('exit_modal_shown');
+        // foco accesible
+        setTimeout(() => { exitCta.focus(); }, 50);
+      }
+      function closeModal(){
+        overlay.style.display = 'none';
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      // Eventos de cierre
+      closeBtn.addEventListener('click', closeModal);
+      keepBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', (e) => { if(e.target === overlay) closeModal(); });
+      document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
+
+      // Disparador: cuando el puntero sale por arriba (desktop)
+      function handleMouseOut(e){
+        if(localStorage.getItem(STORAGE_KEY)) return;
+        if(e.clientY <= 0){
+          localStorage.setItem(STORAGE_KEY, '1');
+          openModal();
+          document.removeEventListener('mouseout', handleMouseOut);
+        }
+      }
+      document.addEventListener('mouseout', handleMouseOut);
+
+      // Disparador alternativo: inactividad/tiempo en página (fallback mobile)
+      setTimeout(() => {
+        if(!localStorage.getItem(STORAGE_KEY)){
+          localStorage.setItem(STORAGE_KEY, '1');
+          openModal();
+        }
+      }, 25000); // 25s
+
+    })();
+      // Delegación global: medir cualquier enlace a WhatsApp
+    document.addEventListener('click', function(e){
+      const a = e.target.closest('a[href]');
+      if(!a) return;
+      const href = a.getAttribute('href') || '';
+      if(/wa\.me|whatsapp\.com/i.test(href)){
+        // Meta Pixel
+        try { if (typeof fbq === 'function') fbq('trackCustom', 'ClickWhatsApp', {href, source: a.id || 'unknown'}); } catch(err){}
+        // Tracking ligero local
+        track('click_whatsapp', {source: a.id || 'unknown', href});
+      }
+    });
+  </script>
+</body>
+</html>

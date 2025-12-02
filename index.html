@@ -3,229 +3,230 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GANAMOS • Reclamá tu bono al instante</title>
-  <meta name="description" content="Escribinos por WhatsApp y obtené tu bono instantáneo. Pagos al instante y retiros sin límite.">
-  <meta name="theme-color" content="#8e2de2">
-  <meta property="og:title" content="GANAMOS • Reclamá tu bono al instante">
-  <meta property="og:description" content="Escribinos por WhatsApp y obtené tu bono al instante. Pagos al instante y retiros sin límite.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="casino.jpg">
-  <link rel="icon" href="favicon.png">
+  <title>ACCESO VIP • Súper bono de bienvenida</title>
+
+  <meta name="theme-color" content="#6d16c9">
+
   <style>
-    :root {
-      --text: #fff;
-      --muted: #d0d0d0;
-      --accent: #ff00ff;
-      --btnA: #a020f0;
-      --btnB: #8000d0;
-      --success: #6dda14;
-      --bgCard: rgba(0, 0, 0, 0.75);
-      --overlay: rgba(0,0,0,.7);
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      min-height:100vh;
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif;
+      background:radial-gradient(circle at top,#8225ff 0,#2a004f 55%,#090015 100%);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
-      color: var(--text);
-      background: url("casino.jpg") center/cover no-repeat fixed;
-      text-align: center;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
+    .wrapper{width:100%;max-width:420px}
+    .logos{display:flex;justify-content:center;gap:14px;margin-bottom:18px}
+    .logo-item{
+      background:rgba(0,0,0,.4);
+      border-radius:999px;
+      padding:6px 14px;
+      border:1px solid rgba(255,255,255,.18)
     }
-
-    .card {
-      background: var(--bgCard);
-      border-radius: 20px;
-      padding: 28px 22px;
-      max-width: 500px;
-      width: min(92vw, 500px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-      backdrop-filter: blur(15px);
+    .logo-item img{height:30px}
+    .card{
+      background:rgba(5,0,25,.92);
+      border-radius:22px;
+      padding:18px;
+      box-shadow:0 18px 45px rgba(0,0,0,.8);
+      border:1px solid rgba(255,255,255,.13);
+      position:relative;
+      overflow:hidden
     }
-
-    .logo-text {
-      font-size: clamp(30px, 6vw, 52px);
-      font-weight: 900;
-      margin-bottom: 18px;
-      text-shadow: 0 4px 10px rgba(0,0,0,0.7);
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:radial-gradient(circle at top,#b96bff26 0,transparent 55%);
+      opacity:.9
     }
-
-    .pill { background: rgba(255,255,255,0.1); border-radius: 999px; padding: 4px 12px; font-weight: 700; display: inline-block; margin-bottom: 12px; }
-
-    h1 { color: var(--accent); font-size: clamp(20px, 4vw, 28px); margin-bottom: 16px; text-transform: uppercase; }
-
-    .bonus { font-size: clamp(18px, 4.6vw, 24px); color: var(--success); margin-bottom: 16px; text-shadow: 0 3px 8px rgba(0,0,0,0.6); }
-    .pre-msg { font-size: 15px; color: var(--muted); margin-bottom: 12px; }
-
-    .cta {
-      position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      padding: 15px 24px; border-radius: 999px; background: linear-gradient(180deg, var(--btnA), var(--btnB));
-      color: #fff; font-weight: 800; text-decoration: none; box-shadow: 0 8px 28px rgba(128,0,208,0.6);
-      transition: transform .1s ease, filter .15s ease; animation: pulse 2.2s infinite;
+    .card > *{position:relative;z-index:1}
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:11px;
+      font-weight:800;
+      text-transform:uppercase;
+      padding:6px 12px;
+      border-radius:999px;
+      background:rgba(12,0,44,.9);
+      border:1px solid rgba(255,255,255,.3);
+      margin-bottom:10px
     }
-    .cta:hover { transform: scale(1.04); filter: brightness(1.1); }
-    .cta img { width: 22px; height: 22px; }
-
-    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
-
-    .footer { margin-top: 18px; font-size: 14px; font-weight: 700; color: var(--muted); }
-
-    /* Botón flotante (siempre visible) */
-    .cta-floating { position: fixed; bottom: 18px; right: 18px; background: linear-gradient(180deg, var(--btnA), var(--btnB)); padding: 13px 20px; border-radius: 999px; font-weight: 800; color: #fff; box-shadow: 0 0 20px rgba(160,0,240,0.6); z-index: 999; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
-    .cta-floating img { width: 20px; height: 20px; }
-
-    .cta-floating:focus-visible, .cta:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
-
-    /* Exit intent modal */
-    .modal-overlay { position: fixed; inset: 0; background: var(--overlay); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 20px; }
-    .modal { background: var(--bgCard); width: min(92vw, 520px); border-radius: 20px; padding: 22px 18px; box-shadow: 0 20px 60px rgba(0,0,0,.6); text-align: left; }
-    .modal header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
-    .modal h2 { font-size: clamp(18px, 4.2vw, 24px); color: var(--accent); }
-    .modal p { color: var(--muted); margin: 10px 0 14px; }
-    .modal .modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-    .btn-secondary { border-radius: 999px; padding: 12px 18px; background: rgba(255,255,255,.12); color:#fff; text-decoration: none; font-weight: 700; }
-    .btn-close { background: transparent; color: #fff; border: none; font-size: 22px; line-height: 1; cursor: pointer; padding: 6px; border-radius: 10px; }
-    .btn-close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-
-    @media (prefers-reduced-motion: reduce) { .cta, .cta-floating { animation: none; } }
+    .pill::before{content:"●";font-size:10px;color:#52ff9b}
+    .title{font-size:26px;font-weight:900;text-transform:uppercase;margin-bottom:6px}
+    .title span{color:#ffe86a}
+    .subtitle{font-size:14px;color:#e0d9ff;margin-bottom:18px}
+    .btn-whatsapp{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      width:100%;
+      padding:15px 18px;
+      border-radius:999px;
+      margin-top:12px;
+      background:linear-gradient(180deg,#15d15b,#09a33f);
+      color:#fff;
+      font-size:16px;
+      font-weight:800;
+      text-decoration:none;
+      box-shadow:0 10px 26px rgba(4,130,46,0.8)
+    }
+    .btn-whatsapp img{width:22px}
+    .bar{
+      margin-top:14px;
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.14);
+      text-align:center;
+      font-size:11px;
+      color:#ffe86a
+    }
+    .stats{
+      margin-top:16px;
+      padding:10px;
+      border-radius:16px;
+      background:rgba(255,255,255,.02);
+      border:1px solid rgba(255,255,255,.11);
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px
+    }
+    .stat-item{flex:1 1 30%}
+    .stat-label{font-size:10px;color:#c7bfff;text-transform:uppercase}
+    .stat-value{font-size:14px;font-weight:800}
+    .games-image{
+      margin-top:16px;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.15)
+    }
+    .games-image img{width:100%}
+    .footer{margin-top:12px;font-size:11px;color:#b5aee5;text-align:center}
   </style>
-  <!-- Meta Pixel Code -->
+
+  <!-- PIXEL -->
   <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '711179821799803');
-    fbq('track', 'PageView');
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){ n.callMethod ?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init','711179821799803');
+    fbq('track','PageView');
   </script>
-  <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=711179821799803&ev=PageView&noscript=1" />
-  </noscript>
-  <!-- End Meta Pixel Code -->
 </head>
+
 <body>
-  <main class="card" role="main">
-    <div class="logo-text">GANAMOS.NET</div>
-    <p class="pill">🔥 PROMO LIMITADA 🔥</p>
-    <h1>Reclamá tu bono con tu carga</h1>
-    <p class="bonus">🎁 ¡Solo quedan <span id="contador">10</span> bonos disponibles hoy!</p>
-    <p class="pre-msg">Enviá <strong>“QUIERO GANAR”</strong> y activá tu premio ahora.</p>
 
-    <!-- CTA principal -->
-    <a id="whatsapp-btn" class="cta" href="https://wa.me/541171190448?text=QUIERO%20GANAR&utm_source=landing&utm_medium=cta&utm_campaign=bono_instantaneo" target="_blank" rel="noopener" aria-label="Reclamar bono al instante por WhatsApp">
-      💬 Reclamar bono al instante
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="" aria-hidden="true">
-    </a>
+  <div class="wrapper">
 
-    <p class="footer">🎰 RULETA EN VIVO • SLOTS • APUESTAS 🎯</p>
-  </main>
-
-  <!-- CTA flotante -->
-  <a id="whatsapp-float" class="cta-floating" href="https://wa.me/541171190448?text=QUIERO%20GANAR&utm_source=landing_float&utm_medium=cta&utm_campaign=bono_instantaneo" target="_blank" rel="noopener" aria-label="Abrir WhatsApp para reclamar el bono">
-    💬 Ganá ahora
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="" aria-hidden="true">
-  </a>
-
-  <!-- Modal de salida (exit intent) -->
-  <div id="exit-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="exit-title" aria-hidden="true">
-    <div class="modal" role="document">
-      <header>
-        <h2 id="exit-title">Antes de irte… ¿te guardo el bono?</h2>
-        <button id="exit-close" class="btn-close" aria-label="Cerrar">✕</button>
-      </header>
-      <p>Escribinos por WhatsApp y te activamos <strong>el bono al instante</strong>. No perdés tu lugar en la promo.</p>
-      <div class="modal-actions">
-        <a id="exit-cta" class="cta" href="https://wa.me/541171190448?text=QUIERO%20GANAR&utm_source=exit_modal&utm_medium=cta&utm_campaign=bono_instantaneo&utm_content=salida" target="_blank" rel="noopener">💬 Activar bono por WhatsApp</a>
-        <button id="exit-keep" class="btn-secondary" type="button">Seguir navegando</button>
-      </div>
+    <div class="logos">
+      <div class="logo-item"><img src="logo bet22.webp"></div>
+      <div class="logo-item"><img src="ganamos logo.webp"></div>
     </div>
+
+    <section class="card">
+
+      <div class="pill">ACCESO VIP</div>
+
+      <h1 class="title">Súper bono <span>de bienvenida</span></h1>
+      <p class="subtitle">Escribinos por WhatsApp y activá tu usuario con bono especial.</p>
+
+      <!-- BOTÓN DE RESPALDO (si falla Sheets igual abre WhatsApp) -->
+      <a
+        id="btn-whatsapp"
+        class="btn-whatsapp"
+        href="https://api.whatsapp.com/send?phone=5491111111111&text=Hola%20quiero%20un%20usuario&type=phone_number&app_absent=0"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+        WHATSAPP OFFICIAL
+      </a>
+
+      <div class="bar">Atención y retiros 24 HS</div>
+
+      <div class="stats">
+        <div class="stat-item"><div class="stat-label">BONO</div><div class="stat-value">Especial</div></div>
+        <div class="stat-item"><div class="stat-label">Depósitos</div><div class="stat-value">Inmediatos</div></div>
+        <div class="stat-item"><div class="stat-label">Retiros</div><div class="stat-value">Sin límites</div></div>
+        <div class="stat-item"><div class="stat-label">Carga mín.</div><div class="stat-value">$1.000</div></div>
+        <div class="stat-item"><div class="stat-label">Retiro mín.</div><div class="stat-value">$2.000</div></div>
+      </div>
+
+      <div class="games-image">
+        <img src="juegos.jpeg">
+      </div>
+
+      <p class="footer">© 2025 • Juego +18</p>
+
+    </section>
   </div>
 
+  <!-- SCRIPT WHATSAPP DINÁMICO -->
   <script>
-    // Utilidad para seguimiento ligero
-    function track(event, meta){
-      try { navigator.sendBeacon('/track', JSON.stringify({event, meta, ts: Date.now()})); } catch(e){}
-    }
+    document.addEventListener('DOMContentLoaded', function () {
 
-    // Contador de urgencia
-    (function(){
-      const el = document.getElementById('contador');
-      let num = parseInt(el.textContent, 10) || 10;
-      setInterval(() => { if (num > 3) { num--; el.textContent = num; } }, 7000);
-    })();
+      var btn = document.getElementById('btn-whatsapp');
+      if (!btn) return;
 
-    // Wire tracking a CTAs
-    function wireClickTracking(id, label){
-      const btn = document.getElementById(id);
-      if(!btn) return;
-      btn.addEventListener('click', () => track('click_whatsapp', {source: label}));
-    }
-    wireClickTracking('whatsapp-btn', 'hero');
-    wireClickTracking('whatsapp-float', 'float');
+      // NUEVO CSV DEL CLIENTE
+      var SHEET_CSV_URL =
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vQa0IJ9lK8HhsoHgs6tWibd9G739ffesYENMm_arl_kheF_-IEhqpiv---4AMtvRMugeHDt-gXtHi6S/pub?gid=0&output=csv";
 
-    // Exit intent modal (solo una vez por sesión)
-    (function(){
-      const overlay = document.getElementById('exit-overlay');
-      const closeBtn = document.getElementById('exit-close');
-      const keepBtn  = document.getElementById('exit-keep');
-      const exitCta  = document.getElementById('exit-cta');
-      const STORAGE_KEY = 'exit_modal_shown_v1';
+      var DEFAULT_MESSAGE = "Hola quiero un usuario";
 
-      function openModal(){
-        if(overlay.getAttribute('aria-hidden') === 'false') return; // ya abierto
-        overlay.style.display = 'flex';
-        overlay.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-        track('exit_modal_shown');
-        // foco accesible
-        setTimeout(() => { exitCta.focus(); }, 50);
-      }
-      function closeModal(){
-        overlay.style.display = 'none';
-        overlay.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      }
+      function actualizarHref(numeroCrudo) {
+        var limpio = (numeroCrudo || "")
+          .toString()
+          .trim()
+          .replace(/[^\d]/g, "");
 
-      // Eventos de cierre
-      closeBtn.addEventListener('click', closeModal);
-      keepBtn.addEventListener('click', closeModal);
-      overlay.addEventListener('click', (e) => { if(e.target === overlay) closeModal(); });
-      document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
-
-      // Disparador: cuando el puntero sale por arriba (desktop)
-      function handleMouseOut(e){
-        if(localStorage.getItem(STORAGE_KEY)) return;
-        if(e.clientY <= 0){
-          localStorage.setItem(STORAGE_KEY, '1');
-          openModal();
-          document.removeEventListener('mouseout', handleMouseOut);
+        if (!limpio) {
+          console.warn("Número inválido, uso respaldo.");
+          return;
         }
-      }
-      document.addEventListener('mouseout', handleMouseOut);
 
-      // Disparador alternativo: inactividad/tiempo en página (fallback mobile)
-      setTimeout(() => {
-        if(!localStorage.getItem(STORAGE_KEY)){
-          localStorage.setItem(STORAGE_KEY, '1');
-          openModal();
+        var url =
+          "https://api.whatsapp.com/send?phone=" +
+          limpio +
+          "&text=" +
+          encodeURIComponent(DEFAULT_MESSAGE) +
+          "&type=phone_number&app_absent=0";
+
+        btn.href = url;
+        console.log("Número actualizado a:", url);
+      }
+
+      fetch(SHEET_CSV_URL)
+        .then(res => res.text())
+        .then(texto => {
+          var primeraLinea = texto.split("\n")[0] || "";
+          var primeraCelda = primeraLinea.split(",")[0] || "";
+          actualizarHref(primeraCelda);
+        })
+        .catch(err => console.error("Error cargando número:", err));
+
+      btn.addEventListener("click", function () {
+        if (typeof fbq === "function") {
+          fbq("trackCustom","clickwhatsapp",{page:window.location.href});
         }
-      }, 25000); // 25s
+      });
 
-    })();
-      // Delegación global: medir cualquier enlace a WhatsApp
-    document.addEventListener('click', function(e){
-      const a = e.target.closest('a[href]');
-      if(!a) return;
-      const href = a.getAttribute('href') || '';
-      if(/wa\.me|whatsapp\.com/i.test(href)){
-        // Meta Pixel
-        try { if (typeof fbq === 'function') fbq('trackCustom', 'ClickWhatsApp', {href, source: a.id || 'unknown'}); } catch(err){}
-        // Tracking ligero local
-        track('click_whatsapp', {source: a.id || 'unknown', href});
-      }
     });
   </script>
+
 </body>
 </html>

@@ -64,7 +64,6 @@
       margin-bottom:16px;
       line-height:1.4;
     }
-
     .btn-whatsapp{
       display:flex;
       justify-content:center;
@@ -77,6 +76,7 @@
       color:#fff;
       box-shadow:0 18px 38px rgba(5,160,70,.45);
       animation:pulseGlow 3.6s ease-in-out infinite;
+      cursor:pointer;
     }
     @keyframes pulseGlow{
       0%,100%{box-shadow:0 18px 38px rgba(5,160,70,.45)}
@@ -100,7 +100,6 @@
       font-weight:700;
       opacity:.95;
     }
-
     .bar{
       margin-top:14px;
       padding:9px;
@@ -112,7 +111,6 @@
       text-align:center;
       color:#ffe86a;
     }
-
     .stats{
       margin-top:14px;
       display:flex;
@@ -123,7 +121,6 @@
     .stat-item{text-align:center;flex:1}
     .stat-label{font-size:11px;color:#d9cfff;font-weight:700}
     .stat-value{font-weight:900}
-
     .footer{
       margin-top:12px;
       font-size:10px;
@@ -140,8 +137,10 @@
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};
       if(!f._fbq)f._fbq=n;
       n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
+      n.queue=[];
+      t=b.createElement(e);t.async=!0;
+      t.src=v;
+      s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)
     }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
@@ -156,14 +155,17 @@
   // 🔴 CAMBIÁ SOLO ESTE NÚMERO
   const WHATSAPP_NUMBER = "541159113205";
 
-  const message = encodeURIComponent(
-    "Hola, quiero más info."
-  );
-
+  const message = encodeURIComponent("Hola, quiero más info.");
   const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
 
   document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("btn-whatsapp").href = waLink;
+    const btn = document.getElementById("btn-whatsapp");
+    btn.href = waLink;
+
+    btn.addEventListener("click", () => {
+      // ✅ EVENTO META PERSONALIZADO
+      fbq('trackCustom', 'clickwhatsapp');
+    });
   });
 </script>
 

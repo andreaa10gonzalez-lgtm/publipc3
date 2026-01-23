@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ACCESO VIP • Súper bono de bienvenida</title>
+  <title>ACCESO VIP • WhatsApp Oficial</title>
 
   <meta name="theme-color" content="#6d16c9">
 
@@ -23,37 +23,22 @@
     .logos{
       display:flex;
       justify-content:center;
-      align-items:center;
-      margin-bottom:14px;
       gap:28px;
+      margin-bottom:14px;
     }
-    .logo-item{flex:0 0 auto;text-align:center;}
     .logo-item img{
       max-height:62px;
       max-width:220px;
       object-fit:contain;
-      filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));
+      filter:drop-shadow(0 10px 18px rgba(0,0,0,.35));
     }
-
     .card{
       background:linear-gradient(180deg,#1b0626,#050109);
       border-radius:24px;
       padding:22px 18px 18px;
       box-shadow:0 12px 44px rgba(0,0,0,.72);
       border:1px solid rgba(255,255,255,.10);
-      position:relative;
-      overflow:hidden;
     }
-    .card:before{
-      content:"";
-      position:absolute;
-      inset:-120px -120px auto auto;
-      width:240px;height:240px;
-      background:radial-gradient(circle at 30% 30%, rgba(130,55,255,.35), transparent 60%);
-      transform:rotate(15deg);
-      pointer-events:none;
-    }
-
     .pill{
       display:inline-block;
       padding:7px 16px;
@@ -62,17 +47,14 @@
       border:1px solid rgba(255,255,255,.18);
       font-size:12px;
       font-weight:800;
-      letter-spacing:.06em;
       text-transform:uppercase;
       margin-bottom:14px;
       color:#f2edff;
     }
-
     .title{
       font-size:26px;
       font-weight:900;
       text-transform:uppercase;
-      line-height:1.15;
       margin-bottom:10px;
       letter-spacing:.02em;
     }
@@ -82,57 +64,30 @@
       margin-bottom:16px;
       line-height:1.4;
     }
-    .subtitle strong{color:#ffffff}
 
-    /* BOTÓN */
     .btn-whatsapp{
       display:flex;
-      align-items:center;
       justify-content:center;
       gap:12px;
       width:100%;
-      padding:16px 18px;
+      padding:16px;
       border-radius:999px;
-      border:none;
-      cursor:pointer;
       text-decoration:none;
-      background:linear-gradient(180deg,#27e56d 0%, #11c354 55%, #0aa548 100%);
+      background:linear-gradient(180deg,#27e56d,#0aa548);
       color:#fff;
-      box-shadow:0 18px 38px rgba(5,160,70,0.45);
-      position:relative;
-      transform:translateZ(0);
-      user-select:none;
-      -webkit-tap-highlight-color: transparent;
-      transition:transform .15s ease, filter .15s ease, box-shadow .15s ease;
-      animation: pulseGlow 3.6s ease-in-out infinite;
-    }
-    .btn-whatsapp:hover{
-      transform:translateY(-1px);
-      filter:brightness(1.03);
-      box-shadow:0 22px 46px rgba(5,160,70,0.55);
-    }
-    .btn-whatsapp:active{
-      transform:translateY(0px) scale(0.99);
-      filter:brightness(.98);
-      box-shadow:0 14px 32px rgba(5,160,70,0.45);
+      box-shadow:0 18px 38px rgba(5,160,70,.45);
+      animation:pulseGlow 3.6s ease-in-out infinite;
     }
     @keyframes pulseGlow{
-      0%, 100% { box-shadow:0 18px 38px rgba(5,160,70,0.45); }
-      50%      { box-shadow:0 22px 50px rgba(5,160,70,0.62); }
-    }
-    .btn-whatsapp img{
-      width:22px;
-      height:22px;
-      flex:0 0 auto;
-      filter: drop-shadow(0 10px 14px rgba(0,0,0,.25));
+      0%,100%{box-shadow:0 18px 38px rgba(5,160,70,.45)}
+      50%{box-shadow:0 22px 50px rgba(5,160,70,.62)}
     }
     .btn-text{
       display:flex;
       flex-direction:column;
       align-items:center;
-      line-height:1.05;
-      gap:4px;
       text-align:center;
+      line-height:1.05;
     }
     .btn-text .main{
       font-size:16px;
@@ -143,65 +98,31 @@
     .btn-text .sub{
       font-size:12px;
       font-weight:700;
-      color:rgba(255,255,255,.92);
-      text-transform:none;
-      letter-spacing:0;
+      opacity:.95;
     }
 
     .bar{
       margin-top:14px;
-      padding:9px 12px;
+      padding:9px;
       border-radius:999px;
       background:rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.16);
       font-size:11px;
       font-weight:800;
-      text-transform:uppercase;
-      color:#ffe86a;
       text-align:center;
-      letter-spacing:.04em;
+      color:#ffe86a;
     }
 
     .stats{
       margin-top:14px;
-      padding:10px 10px 6px;
-      border-radius:16px;
-      background:rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.12);
       display:flex;
       justify-content:space-between;
       gap:6px;
       font-size:12px;
     }
-    .stat-item{flex:1;text-align:center;padding:6px 4px;border-radius:12px;}
-    .stat-label{
-      color:#d9cfff;
-      font-weight:700;
-      margin-bottom:4px;
-      font-size:11px;
-    }
-    .stat-value{
-      font-weight:900;
-      color:#fff;
-    }
-
-    .games-wrap{margin-top:14px;}
-    .games-title{
-      font-size:12px;
-      font-weight:800;
-      color:#e8e1ff;
-      margin:0 0 10px;
-      text-align:center;
-      opacity:.95;
-    }
-    .games-image{
-      width:100%;
-      border-radius:14px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow:0 10px 30px rgba(0,0,0,.45);
-    }
-    .games-image img{width:100%;display:block;border-radius:14px;}
+    .stat-item{text-align:center;flex:1}
+    .stat-label{font-size:11px;color:#d9cfff;font-weight:700}
+    .stat-value{font-weight:900}
 
     .footer{
       margin-top:12px;
@@ -209,13 +130,6 @@
       text-align:center;
       color:#c7b5ee;
       line-height:1.35;
-    }
-    .trustline{
-      display:block;
-      margin-bottom:6px;
-      color:#efe8ff;
-      font-weight:800;
-      opacity:.92;
     }
   </style>
 
@@ -234,160 +148,73 @@
     fbq('init', '711179821799803');
     fbq('track', 'PageView');
   </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=711179821799803&ev=PageView&noscript=1"/>
-  </noscript>
 </head>
+
 <body>
 
-  <div class="wrapper">
-    <div class="logos">
-      <div class="logo-item"><img src="logo bet22.webp" alt="22Bet"></div>
-      <div class="logo-item"><img src="ganamos logo.webp" alt="Ganamos"></div>
-    </div>
+<script>
+  // 🔴 CAMBIÁ SOLO ESTE NÚMERO
+  const WHATSAPP_NUMBER = "541168496442";
 
-    <section class="card">
-      <div class="pill">ACCESO VIP • NUEVOS USUARIOS</div>
+  const message = encodeURIComponent(
+    "Hola, quiero más info."
+  );
 
-      <h1 class="title">Súper bono de bienvenida</h1>
-      <p class="subtitle">
-        <strong>Activá tu bono ahora mismo.</strong><br>
-        Un asesor real te escribe por WhatsApp.
-      </p>
+  const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
 
-      <!-- BOTÓN PRINCIPAL -->
-      <a id="btn-whatsapp" class="btn-whatsapp" href="#" rel="noopener">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="">
-        <span class="btn-text">
-          <span class="main">WHATSAPP OFICIAL</span>
-          <span class="sub">Respuesta inmediata • Sin bots</span>
-        </span>
-      </a>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("btn-whatsapp").href = waLink;
+  });
+</script>
 
-      <!-- BACKUP invisible -->
-      <a id="btn-whatsapp-backup" href="#" aria-hidden="true"
-         style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
-        Backup WhatsApp
-      </a>
-
-      <div id="wa-status" class="bar">✔ Atención 24 hs • ✔ Retiros sin límites</div>
-
-      <!-- STATS (orden optimizado) -->
-      <div class="stats">
-        <div class="stat-item">
-          <div class="stat-label">BONO</div>
-          <div class="stat-value">Especial</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-label">Mínimo de retiro</div>
-          <div class="stat-value">$2.000</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-label">Mínimo de carga</div>
-          <div class="stat-value">$1.000</div>
-        </div>
-      </div>
-
-      <div class="games-wrap">
-        <p class="games-title">Slots, casino en vivo y apuestas deportivas</p>
-        <div class="games-image">
-          <img src="juegos.jpeg" alt="Juegos">
-        </div>
-      </div>
-
-      <p class="footer">
-        <span class="trustline">Plataforma segura • Pagos verificados</span>
-        © 2025 • Juego solo +18. Operá con responsabilidad.
-      </p>
-    </section>
+<div class="wrapper">
+  <div class="logos">
+    <div class="logo-item"><img src="logo bet22.webp" alt="22Bet"></div>
+    <div class="logo-item"><img src="ganamos logo.webp" alt="Ganamos"></div>
   </div>
 
-  <!-- TRACKING ROBUSTO + BACKUP -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // ✅ CAMBIÁS EL NÚMERO ACÁ (1 sola línea)
-      var WHATSAPP_PHONE = "543813032533"; // sin +, solo números
+  <section class="card">
+    <div class="pill">ACCESO VIP • NUEVOS USUARIOS</div>
 
-      // (opcional) Cambiá el mensaje acá
-      var DEFAULT_TEXT = "Hola, quiero mi bono de bienvenida. Quiero un usuario.";
+    <h1 class="title">WhatsApp Oficial</h1>
 
-      var btn = document.getElementById('btn-whatsapp');
-      var backup = document.getElementById('btn-whatsapp-backup');
-      var isLocked = false;
+    <p class="subtitle">
+      <strong>Bono disponible con la primera carga.</strong><br>
+      Atención inmediata • Asesor real
+    </p>
 
-      function sanitizePhone(raw){
-        return String(raw || "").replace(/[^\d]/g, "");
-      }
-      function buildWaLink(phone, text){
-        var p = sanitizePhone(phone);
-        var t = encodeURIComponent(text || "");
-        return "https://wa.me/" + p + "?text=" + t;
-      }
-      function setLinks(link){
-        if (btn) btn.setAttribute('href', link);
-        if (backup) backup.setAttribute('href', link);
-      }
+    <a id="btn-whatsapp" class="btn-whatsapp" href="#">
+      <span class="btn-text">
+        <span class="main">WHATSAPP OFICIAL</span>
+        <span class="sub">Respuesta inmediata • Sin bots</span>
+      </span>
+    </a>
 
-      // Seteamos link final
-      var waLinkFinal = buildWaLink(WHATSAPP_PHONE, DEFAULT_TEXT);
-      setLinks(waLinkFinal);
+    <div class="bar">
+      ✔ Atención 24 hs • ✔ Plataforma verificada
+    </div>
 
-      function firePixel(name, data){
-        try { if (typeof fbq === 'function') fbq('trackCustom', name, data || {}); } catch(e) {}
-      }
+    <div class="stats">
+      <div class="stat-item">
+        <div class="stat-label">BONO</div>
+        <div class="stat-value">Disponible</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Carga mínima</div>
+        <div class="stat-value">$1.000</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Retiro mínimo</div>
+        <div class="stat-value">$2.000</div>
+      </div>
+    </div>
 
-      function goWhatsApp(source){
-        if (isLocked) return;
-        isLocked = true;
-
-        var payload = { page: window.location.href, source: source || "main" };
-
-        // Track temprano
-        firePixel('clickwhatsapp', payload);
-        firePixel('clickwhatsapp_intent', payload);
-
-        // Espera mínima para que el request del pixel salga antes de navegar
-        setTimeout(function(){
-          window.location.href = waLinkFinal;
-        }, 220);
-
-        // Segundo intento invisible por si el primero se corta (casos raros)
-        setTimeout(function(){
-          try { if (backup) backup.click(); } catch(e) {}
-          isLocked = false;
-        }, 1400);
-      }
-
-      // Pointerdown mejora muchísimo en mobile
-      if (btn){
-        btn.addEventListener('pointerdown', function(e){
-          e.preventDefault();
-          goWhatsApp("main_pointerdown");
-        }, { passive: false });
-
-        // Fallback
-        btn.addEventListener('click', function(e){
-          e.preventDefault();
-          goWhatsApp("main_click");
-        });
-      }
-
-      // Backup track
-      if (backup){
-        backup.addEventListener('click', function(){
-          firePixel('clickwhatsapp_backup', { page: window.location.href });
-        });
-      }
-
-      // “Return” (aprox) cuando vuelve a la pestaña
-      document.addEventListener('visibilitychange', function(){
-        if (document.visibilityState === 'visible'){
-          firePixel('clickwhatsapp_return', { page: window.location.href });
-        }
-      });
-    });
-  </script>
+    <p class="footer">
+      Plataforma segura • Pagos verificados<br>
+      +18 • Jugá con responsabilidad
+    </p>
+  </section>
+</div>
 
 </body>
 </html>

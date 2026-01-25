@@ -67,7 +67,6 @@
     .btn-whatsapp{
       display:flex;
       justify-content:center;
-      gap:12px;
       width:100%;
       padding:16px;
       border-radius:999px;
@@ -77,6 +76,7 @@
       box-shadow:0 18px 38px rgba(5,160,70,.45);
       animation:pulseGlow 3.6s ease-in-out infinite;
       cursor:pointer;
+      text-align:center;
     }
     @keyframes pulseGlow{
       0%,100%{box-shadow:0 18px 38px rgba(5,160,70,.45)}
@@ -86,7 +86,6 @@
       display:flex;
       flex-direction:column;
       align-items:center;
-      text-align:center;
       line-height:1.05;
     }
     .btn-text .main{
@@ -114,7 +113,6 @@
     .stats{
       margin-top:14px;
       display:flex;
-      justify-content:space-between;
       gap:6px;
       font-size:12px;
     }
@@ -133,7 +131,8 @@
   <!-- META PIXEL -->
   <script>
     !function(f,b,e,v,n,t,s){
-      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      if(f.fbq)return;
+      n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};
       if(!f._fbq)f._fbq=n;
       n.push=n;n.loaded=!0;n.version='2.0';
@@ -152,19 +151,30 @@
 <body>
 
 <script>
-  // 🔴 CAMBIÁ SOLO ESTE NÚMERO
   const WHATSAPP_NUMBER = "543813032533";
 
-  const message = encodeURIComponent("Hola, quiero más info.");
+  const message = encodeURIComponent(
+    "Hola, quiero crear mi usuario y cargar saldo."
+  );
+
   const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
 
   document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("btn-whatsapp");
     btn.href = waLink;
 
+    let clicked = false;
+
     btn.addEventListener("click", () => {
-      // ✅ EVENTO META PERSONALIZADO
+      if (clicked) return;
+      clicked = true;
+
+      // EVENTO REAL QUE VAS A MEDIR
       fbq('trackCustom', 'clickwhatsapp');
+
+      setTimeout(() => {
+        clicked = false;
+      }, 3000);
     });
   });
 </script>
@@ -176,31 +186,27 @@
   </div>
 
   <section class="card">
-    <div class="pill">ACCESO VIP • NUEVOS USUARIOS</div>
+    <div class="pill">ACCESO VIP</div>
 
     <h1 class="title">WhatsApp Oficial</h1>
 
     <p class="subtitle">
-      <strong>Bono disponible con la primera carga.</strong><br>
-      Atención inmediata • Asesor real
+      Contacto directo para crear usuario y cargar saldo.<br>
+      Atención humana inmediata.
     </p>
 
     <a id="btn-whatsapp" class="btn-whatsapp" href="#">
       <span class="btn-text">
-        <span class="main">WHATSAPP OFICIAL</span>
-        <span class="sub">Respuesta inmediata • Sin bots</span>
+        <span class="main">IR A WHATSAPP</span>
+        <span class="sub">Solo atención oficial</span>
       </span>
     </a>
 
     <div class="bar">
-      ✔ Atención 24 hs • ✔ Plataforma verificada
+      ✔ Sin bots • ✔ Plataforma verificada
     </div>
 
     <div class="stats">
-      <div class="stat-item">
-        <div class="stat-label">BONO</div>
-        <div class="stat-value">Disponible</div>
-      </div>
       <div class="stat-item">
         <div class="stat-label">Carga mínima</div>
         <div class="stat-value">$1.000</div>
@@ -212,7 +218,6 @@
     </div>
 
     <p class="footer">
-      Plataforma segura • Pagos verificados<br>
       +18 • Jugá con responsabilidad
     </p>
   </section>

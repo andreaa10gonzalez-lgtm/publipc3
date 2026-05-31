@@ -23,14 +23,26 @@
     .logos{
       display:flex;
       justify-content:center;
-      gap:28px;
-      margin-bottom:14px;
+      margin-bottom:18px;
     }
-    .logo-item img{
-      max-height:110px;
-      max-width:280px;
-      object-fit:contain;
-      filter:drop-shadow(0 10px 18px rgba(0,0,0,.35));
+    .brand-title{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:38px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+      background:linear-gradient(135deg,#ffe566,#ffd000,#ffb300);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      filter:drop-shadow(0 4px 18px rgba(255,210,0,.45));
+    }
+    .brand-title .clover{
+      font-size:42px;
+      -webkit-text-fill-color:initial;
+      filter:drop-shadow(0 2px 8px rgba(0,200,80,.5));
     }
     .card{
       background:linear-gradient(180deg,#1b0626,#050109);
@@ -181,7 +193,10 @@
 
 <div class="wrapper">
   <div class="logos">
-    <div class="logo-item"><img src="trebol-play.webp" alt="Trebol Play"></div>
+    <div class="brand-title">
+      <span class="clover">🍀</span>
+      trebol play
+    </div>
   </div>
 
   <section class="card">

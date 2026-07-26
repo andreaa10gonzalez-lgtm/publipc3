@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casino Online • Bono de bienvenida con tu carga</title>
+  <meta name="theme-color" content="#6d16c9">
+  <meta name="description" content="Creá tu usuario por WhatsApp y llevate tu bono de bienvenida con tu primera carga. Atención humana inmediata.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --gold1:#ffe566; --gold2:#ffd000; --gold3:#ffb300;
+      --green1:#27e56d; --green2:#0aa548;
+    }
+    html{scroll-behavior:smooth}
+    body{
+      min-height:100vh;
+      font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif;
+      background:radial-gradient(circle at top,#8a2cff 0,#2a004f 55%,#090015 100%);
+      background-attachment:fixed;
+      color:#fff;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:18px 18px 96px;
+    }
+    .wrapper{width:100%;max-width:520px;}
+
+    /* barra urgencia arriba */
+    .urgency{
+      display:flex;align-items:center;justify-content:center;gap:8px;
+      background:linear-gradient(90deg,#ff4d6d,#c81d4a);
+      color:#fff;font-size:12.5px;font-weight:800;
+      padding:9px 12px;border-radius:12px;margin-bottom:16px;
+      text-align:center;box-shadow:0 8px 22px rgba(200,29,74,.35);
+    }
+    .urgency .dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:blink 1.1s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
+    .card{
+      background:linear-gradient(180deg,#1b0626,#050109);
+      border-radius:24px;padding:22px 18px 20px;
+      box-shadow:0 12px 44px rgba(0,0,0,.72);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .pill{
+      display:inline-block;padding:7px 16px;border-radius:999px;
+      background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);
+      font-size:12px;font-weight:800;text-transform:uppercase;margin-bottom:14px;color:#f2edff;
+    }
+
+    /* bloque bono destacado */
+    .bono{
+      text-align:center;
+      background:linear-gradient(135deg,rgba(255,210,0,.16),rgba(255,179,0,.06));
+      border:1px solid rgba(255,210,0,.45);
+      border-radius:18px;padding:16px 14px;margin-bottom:16px;
+    }
+    .bono .kicker{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#ffe86a;}
+    .bono .big{
+      font-size:40px;font-weight:900;line-height:1.05;margin:4px 0 2px;
+      background:linear-gradient(135deg,var(--gold1),var(--gold2),var(--gold3));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .bono .con-carga{font-size:15px;font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:.02em;}
+    .bono .aclara{margin-top:8px;font-size:11.5px;color:#ffd9d9;font-weight:700;}
+
+    .title{font-size:22px;font-weight:900;text-transform:uppercase;margin-bottom:8px;letter-spacing:.02em;text-align:center;}
+    .subtitle{font-size:14px;color:#e8e1ff;margin-bottom:16px;line-height:1.45;text-align:center;}
+
+    .btn-whatsapp{
+      display:flex;justify-content:center;width:100%;padding:16px;border-radius:999px;
+      text-decoration:none;background:linear-gradient(180deg,var(--green1),var(--green2));
+      color:#fff;box-shadow:0 18px 38px rgba(5,160,70,.45);
+      animation:pulseGlow 3s ease-in-out infinite;cursor:pointer;text-align:center;
+    }
+    @keyframes pulseGlow{0%,100%{box-shadow:0 14px 30px rgba(5,160,70,.45);transform:translateY(0)}50%{box-shadow:0 22px 50px rgba(5,160,70,.65);transform:translateY(-1px)}}
+    .btn-text{display:flex;flex-direction:column;align-items:center;line-height:1.1;}
+    .btn-text .main{font-size:17px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;}
+    .btn-text .sub{font-size:12px;font-weight:700;opacity:.95;margin-top:2px;}
+
+    .micro{margin-top:10px;font-size:12px;text-align:center;color:#c9f7d8;font-weight:700;}
+
+    .steps{margin-top:18px;display:flex;flex-direction:column;gap:10px;}
+    .step{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:11px 12px;}
+    .step .n{flex:0 0 30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;background:linear-gradient(135deg,var(--gold1),var(--gold3));color:#241800;}
+    .step .tx{font-size:13.5px;font-weight:700;color:#efe9ff;line-height:1.3;}
+
+    .bar{margin-top:16px;padding:9px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);font-size:11.5px;font-weight:800;text-align:center;color:#ffe86a;}
+
+    .proof{margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:12.5px;font-weight:800;color:#d9ffe6;}
+    .proof .live{width:8px;height:8px;border-radius:50%;background:#27e56d;box-shadow:0 0 0 0 rgba(39,229,109,.7);animation:ping 1.6s infinite}
+    @keyframes ping{0%{box-shadow:0 0 0 0 rgba(39,229,109,.6)}70%{box-shadow:0 0 0 10px rgba(39,229,109,0)}100%{box-shadow:0 0 0 0 rgba(39,229,109,0)}}
+
+    .reviews{margin-top:14px;display:flex;flex-direction:column;gap:8px;}
+    .review{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:10px 12px;}
+    .review .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;}
+    .review .name{font-size:12.5px;font-weight:800;color:#fff;}
+    .review .stars{font-size:12px;color:#ffd000;letter-spacing:1px;}
+    .review .tx{font-size:12px;color:#d9cfff;line-height:1.35;}
+
+    .stats{margin-top:16px;display:flex;gap:6px;}
+    .stat-item{text-align:center;flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:10px 6px;}
+    .stat-label{font-size:11px;color:#d9cfff;font-weight:700}
+    .stat-value{font-weight:900;font-size:15px;margin-top:2px}
+
+    .faq{margin-top:16px;}
+    .faq h3{font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:#ffe86a;margin-bottom:8px;text-align:center;}
+    .qa{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px 12px;margin-bottom:7px;}
+    .qa .q{font-size:12.5px;font-weight:800;color:#fff;margin-bottom:2px;}
+    .qa .a{font-size:12px;color:#d3c8f2;line-height:1.35;}
+
+    .footer{margin-top:16px;font-size:10.5px;text-align:center;color:#c7b5ee;line-height:1.4;}
+
+    /* CTA fijo abajo (mobile) */
+    .sticky-cta{
+      position:fixed;left:0;right:0;bottom:0;z-index:50;
+      padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+      background:linear-gradient(180deg,rgba(9,0,21,0),rgba(9,0,21,.92) 32%);
+    }
+    .sticky-cta a{
+      display:flex;align-items:center;justify-content:center;gap:8px;max-width:520px;margin:0 auto;
+      padding:15px;border-radius:999px;text-decoration:none;font-weight:900;font-size:16px;text-transform:uppercase;letter-spacing:.04em;
+      background:linear-gradient(180deg,var(--green1),var(--green2));color:#fff;box-shadow:0 -4px 24px rgba(0,0,0,.5),0 10px 30px rgba(5,160,70,.5);
+    }
+  </style>
+
+  <!-- META PIXEL -->
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;
+      n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+      t=b.createElement(e);t.async=!0;t.src=v;
+      s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','711179821799803');
+    fbq('track','PageView');
+  </script>
+</head>
+
+<body>
+
+<!-- ==================================================================== -->
+<!--  ÚNICO DATO QUE CAMBIA POR CLIENTE: el número de WhatsApp de abajo    -->
+<!-- ==================================================================== -->
+<script>
+  const WHATSAPP_NUMBER = "573151655802";   // <-- WhatsApp de este cliente
+
+  // Mensaje pre-cargado: deja claro que el bono es CON la carga (evita pedidos de fichas gratis)
+  const message = encodeURIComponent(
+    "Hola! Quiero crear mi usuario y llevarme el BONO de bienvenida con mi primera carga 🍀🎰"
+  );
+  const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+
+  document.addEventListener("DOMContentLoaded", () => {
+    let clicked = false;
+    document.querySelectorAll(".js-wa").forEach(btn => {
+      btn.href = waLink;
+      btn.addEventListener("click", () => {
+        if (clicked) return;
+        clicked = true;
+        fbq('trackCustom','clickwhatsapp');   // EVENTO QUE MEDÍS
+        setTimeout(() => { clicked = false; }, 3000);
+      });
+    });
+  });
+</script>
+
+<div class="wrapper">
+
+  <div class="urgency">
+    <span class="dot"></span>
+    Promo de bienvenida activa hoy • Cupos de atención limitados
+  </div>
+
+  <section class="card">
+    <div class="pill" style="display:block;text-align:center;">✅ WhatsApp oficial • Atención humana</div>
+
+    <div class="bono">
+      <div class="kicker">Bono de bienvenida</div>
+      <div class="big">+100%</div>
+      <div class="con-carga">con tu primera carga</div>
+      <div class="aclara">⚠️ El bono se acredita al confirmar tu carga. No entregamos fichas gratis.</div>
+    </div>
+
+    <h1 class="title">Creá tu usuario en 1 minuto</h1>
+    <p class="subtitle">Te lo damos por WhatsApp, al toque y con atención de una persona real.</p>
+
+    <a class="btn-whatsapp js-wa" href="#">
+      <span class="btn-text">
+        <span class="main">Quiero mi bono 🎁</span>
+        <span class="sub">Abrir WhatsApp con el mensaje listo</span>
+      </span>
+    </a>
+    <p class="micro">✅ Se abre WhatsApp con el mensaje ya escrito — solo tocá <b>Enviar</b></p>
+
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div class="tx">Tocás el botón y se abre WhatsApp con el mensaje listo.</div></div>
+      <div class="step"><div class="n">2</div><div class="tx">Te creamos el usuario y hacés tu primera carga.</div></div>
+      <div class="step"><div class="n">3</div><div class="tx">Sumás tu <b>+100% de bono</b> y empezás a jugar.</div></div>
+    </div>
+
+    <div class="bar">✔ Sin bots • ✔ Plataforma verificada • ✔ Retiros el mismo día</div>
+
+    <div class="proof"><span class="live"></span> +2.000 jugadores cargaron esta semana</div>
+
+    <div class="reviews">
+      <div class="review">
+        <div class="top"><span class="name">Marian G.</span><span class="stars">★★★★★</span></div>
+        <div class="tx">"Cargué y en 5 minutos ya estaba jugando. El retiro me llegó al toque."</div>
+      </div>
+      <div class="review">
+        <div class="top"><span class="name">Lucas R.</span><span class="stars">★★★★★</span></div>
+        <div class="tx">"Atienden re rápido y son de verdad. El bono me lo dieron con la carga."</div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat-item"><div class="stat-label">Carga mínima</div><div class="stat-value">$1.000</div></div>
+      <div class="stat-item"><div class="stat-label">Retiro mínimo</div><div class="stat-value">$2.000</div></div>
+      <div class="stat-item"><div class="stat-label">Atención</div><div class="stat-value">24 hs</div></div>
+    </div>
+
+    <div class="faq">
+      <h3>Preguntas frecuentes</h3>
+      <div class="qa"><div class="q">¿El bono es gratis?</div><div class="a">No. El bono es un <b>+100% extra sobre tu primera carga</b>: cargás y te sumamos el bono. No damos fichas sin carga.</div></div>
+      <div class="qa"><div class="q">¿Cómo cobro mis premios?</div><div class="a">Pedís el retiro por WhatsApp y te lo pagamos el mismo día (retiro mínimo $2.000).</div></div>
+    </div>
+
+    <p class="footer">+18 • Jugá con responsabilidad</p>
+  </section>
+</div>
+
+<!-- CTA fijo abajo -->
+<div class="sticky-cta">
+  <a class="js-wa" href="#">🟢 Quiero mi bono por WhatsApp</a>
+</div>
+
+</body>
+</html>

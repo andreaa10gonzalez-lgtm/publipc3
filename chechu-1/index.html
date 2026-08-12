@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casino Online • Bono de bienvenida con tu carga</title>
+  <meta name="theme-color" content="#1a0730">
+  <meta name="description" content="Creá tu usuario por WhatsApp y llevate tu bono de bienvenida con tu primera carga. Atención humana inmediata.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      /* dorado metálico */
+      --g-hi:#fff7d1; --g1:#ffe483; --g2:#f5c94a; --g3:#c9992f; --g4:#ffe08a;
+      /* verde CTA */
+      --green1:#3ee87e; --green2:#0e9c4c;
+      /* cobre / coral maduro */
+      --copper1:#c15f4a; --copper2:#8a3b2c;
+      --ink:#f4eefc;
+    }
+    html{scroll-behavior:smooth}
+    body{
+      min-height:100vh;position:relative;
+      font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 50% -10%, #7b2bd6 0%, #3a0f68 42%, #180229 78%, #0c0117 100%);
+      background-attachment:fixed;
+      display:flex;align-items:flex-start;justify-content:center;
+      padding:22px 18px 104px;
+      -webkit-font-smoothing:antialiased;
+    }
+    /* patrón geométrico sutil (grilla de puntos al ~5%) con leve parallax */
+    body::before{
+      content:"";position:fixed;inset:-2px;z-index:0;pointer-events:none;
+      background-image:radial-gradient(rgba(255,255,255,.05) 1px, transparent 1.4px);
+      background-size:24px 24px;
+      mask-image:radial-gradient(120% 90% at 50% 0%, #000 55%, transparent 100%);
+      -webkit-mask-image:radial-gradient(120% 90% at 50% 0%, #000 55%, transparent 100%);
+    }
+    .wrapper{position:relative;z-index:1;width:100%;max-width:520px;}
+
+    /* barra urgencia — cobre/coral maduro */
+    .urgency{
+      display:flex;align-items:center;justify-content:center;gap:9px;
+      background:linear-gradient(135deg,var(--copper1),var(--copper2));
+      color:#fff0ea;font-size:12.5px;font-weight:600;letter-spacing:.01em;
+      padding:11px 14px;border-radius:16px;margin-bottom:18px;
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:0 10px 26px rgba(120,45,30,.35), inset 0 1px 0 rgba(255,255,255,.12);
+    }
+    .urgency .dot{width:8px;height:8px;border-radius:50%;background:#ffd9cc;box-shadow:0 0 10px rgba(255,180,150,.9);animation:blink 1.4s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+    /* tarjeta que flota */
+    .card{
+      position:relative;
+      background:linear-gradient(180deg,#241033 0%,#160726 60%,#0d0318 100%);
+      border-radius:24px;padding:26px 20px 22px;
+      border:1px solid rgba(255,255,255,.07);
+      box-shadow:
+        0 30px 60px rgba(0,0,0,.55),
+        0 8px 20px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.06);
+    }
+
+    .pill{
+      display:block;text-align:center;
+      padding:8px 16px;border-radius:16px;
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+      font-size:12px;font-weight:600;letter-spacing:.02em;margin-bottom:18px;color:#efe6ff;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+    }
+
+    /* bloque bono — sin borde duro, división metálica sutil */
+    .bono{
+      position:relative;text-align:center;overflow:hidden;
+      background:
+        radial-gradient(120% 140% at 50% 0%, rgba(255,214,120,.14), rgba(255,214,120,0) 60%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
+      border-radius:20px;padding:20px 16px 18px;margin-bottom:20px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 12px 30px rgba(0,0,0,.28);
+    }
+    .bono::before{ /* filo metálico superior */
+      content:"";position:absolute;top:0;left:12%;right:12%;height:1.5px;
+      background:linear-gradient(90deg,transparent,var(--g2),var(--g-hi),var(--g2),transparent);
+      opacity:.9;
+    }
+    .bono .kicker{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#f4d888;}
+    .bono .big{
+      font-size:74px;font-weight:900;line-height:1;margin:6px 0 4px;letter-spacing:-.02em;
+      background:linear-gradient(180deg,var(--g-hi) 0%,var(--g1) 26%,var(--g2) 50%,var(--g3) 74%,var(--g4) 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      filter:drop-shadow(0 2px 1px rgba(0,0,0,.35)) drop-shadow(0 6px 18px rgba(245,201,74,.35));
+    }
+    .bono .con-carga{font-size:16px;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.04em;}
+    .bono .aclara{margin-top:10px;font-size:11.5px;color:#ffcfc2;font-weight:500;line-height:1.35;}
+
+    .title{font-size:30px;font-weight:800;line-height:1.12;margin-bottom:10px;letter-spacing:-.01em;text-align:center;}
+    .title .hl{
+      position:relative;white-space:nowrap;
+      background:linear-gradient(180deg,var(--g-hi),var(--g2),var(--g3));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .subtitle{font-size:14.5px;color:#d8ccec;margin-bottom:20px;line-height:1.5;text-align:center;font-weight:400;}
+
+    /* ===== CTA verde compartido (primario + sticky) ===== */
+    .cta{
+      position:relative;overflow:hidden;isolation:isolate;
+      background:linear-gradient(180deg,var(--green1),var(--green2));
+      border:1px solid rgba(255,255,255,.24);
+      box-shadow:
+        0 24px 50px rgba(8,150,70,.5),
+        0 6px 16px rgba(0,0,0,.32),
+        inset 0 1px 0 rgba(255,255,255,.35);
+      color:#fff;text-decoration:none;cursor:pointer;
+    }
+    .cta::after{ /* brillo que recorre */
+      content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
+      background:linear-gradient(120deg,transparent,rgba(255,255,255,.5),transparent);
+      transform:skewX(-20deg);animation:shine 5s ease-in-out infinite;z-index:2;
+    }
+    @keyframes shine{0%,55%{left:-70%}100%{left:140%}}
+
+    .btn-whatsapp{
+      display:flex;justify-content:center;width:100%;padding:20px 18px;border-radius:18px;
+      animation:pulseGlow 3.4s ease-in-out infinite;text-align:center;
+    }
+    @keyframes pulseGlow{
+      0%,100%{box-shadow:0 20px 44px rgba(8,150,70,.45),0 6px 16px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.35);transform:translateY(0)}
+      50%{box-shadow:0 28px 60px rgba(8,150,70,.7),0 6px 16px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.4);transform:translateY(-1.5px)}
+    }
+    .btn-text{display:flex;flex-direction:column;align-items:center;line-height:1.15;position:relative;z-index:3;}
+    .btn-text .main{font-size:18px;font-weight:800;letter-spacing:.01em;}
+    .btn-text .sub{font-size:12.5px;font-weight:500;opacity:.95;margin-top:3px;}
+
+    .micro{margin-top:12px;font-size:12px;text-align:center;color:#bff3d2;font-weight:500;}
+
+    .steps{margin-top:20px;display:flex;flex-direction:column;gap:10px;}
+    .step{display:flex;align-items:center;gap:13px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:12px 13px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05);}
+    .step .n{flex:0 0 32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#2a1c00;background:linear-gradient(160deg,var(--g-hi),var(--g2) 55%,var(--g3));box-shadow:0 4px 12px rgba(245,201,74,.4);}
+    .step .tx{font-size:13.5px;font-weight:500;color:#e7ddf6;line-height:1.35;}
+    .step .tx b{font-weight:700;color:#fff;}
+
+    .bar{margin-top:18px;padding:11px;border-radius:16px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10);font-size:11.5px;font-weight:600;text-align:center;color:#f4d888;letter-spacing:.01em;}
+
+    .proof{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:9px;font-size:12.5px;font-weight:600;color:#cfeedd;}
+    .proof .live{width:8px;height:8px;border-radius:50%;background:#3ee87e;box-shadow:0 0 0 0 rgba(62,232,126,.7);animation:ping 1.8s infinite}
+    @keyframes ping{0%{box-shadow:0 0 0 0 rgba(62,232,126,.55)}70%{box-shadow:0 0 0 11px rgba(62,232,126,0)}100%{box-shadow:0 0 0 0 rgba(62,232,126,0)}}
+
+    .reviews{margin-top:16px;display:flex;flex-direction:column;gap:9px;}
+    .review{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:12px 13px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05);}
+    .review .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
+    .review .name{font-size:12.5px;font-weight:700;color:#fff;}
+    .review .stars{font-size:12px;color:var(--g2);letter-spacing:1px;}
+    .review .tx{font-size:12px;color:#cdc2e4;line-height:1.4;font-weight:400;}
+
+    .stats{margin-top:18px;display:flex;gap:8px;}
+    .stat-item{text-align:center;flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:12px 6px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05);}
+    .stat-label{font-size:11px;color:#cdc2e4;font-weight:500}
+    .stat-value{font-weight:800;font-size:16px;margin-top:3px;color:#fff}
+
+    .faq{margin-top:18px;}
+    .faq h3{font-size:12.5px;text-transform:uppercase;letter-spacing:.12em;color:#f4d888;margin-bottom:9px;text-align:center;font-weight:700;}
+    .qa{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:12px 13px;margin-bottom:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05);}
+    .qa .q{font-size:12.5px;font-weight:700;color:#fff;margin-bottom:3px;}
+    .qa .a{font-size:12px;color:#cabfe2;line-height:1.4;font-weight:400;}
+    .qa .a b{color:#fff;font-weight:700;}
+
+    .footer{margin-top:18px;font-size:10.5px;text-align:center;color:#b4a3d4;line-height:1.45;font-weight:400;}
+
+    /* CTA fijo abajo — idéntico al principal */
+    .sticky-cta{
+      position:fixed;left:0;right:0;bottom:0;z-index:50;
+      padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+      background:linear-gradient(180deg,rgba(12,1,23,0),rgba(12,1,23,.94) 34%);
+    }
+    .sticky-cta a{
+      display:flex;align-items:center;justify-content:center;gap:9px;max-width:520px;margin:0 auto;
+      padding:18px;border-radius:18px;font-weight:800;font-size:17px;letter-spacing:.01em;
+    }
+    .sticky-cta a span{position:relative;z-index:3;}
+  </style>
+
+  <!-- META PIXEL -->
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;
+      n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+      t=b.createElement(e);t.async=!0;t.src=v;
+      s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','711179821799803');
+    fbq('track','PageView');
+  </script>
+</head>
+
+<body>
+
+<!-- ==================================================================== -->
+<!--  ÚNICO DATO QUE CAMBIA POR CLIENTE: el número de WhatsApp de abajo    -->
+<!-- ==================================================================== -->
+<script>
+  const WHATSAPP_NUMBER = "5492615001188";   // <-- WhatsApp de este cliente
+
+  // Mensaje pre-cargado: deja claro que el bono es CON la carga (evita pedidos de fichas gratis)
+  const message = encodeURIComponent(
+    "Hola! Quiero crear mi usuario y llevarme el BONO de bienvenida con mi primera carga 🍀🎰"
+  );
+  const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+
+  document.addEventListener("DOMContentLoaded", () => {
+    let clicked = false;
+    document.querySelectorAll(".js-wa").forEach(btn => {
+      btn.href = waLink;
+      btn.addEventListener("click", () => {
+        if (clicked) return;
+        clicked = true;
+        fbq('trackCustom','clickwhatsapp');   // EVENTO QUE MEDÍS
+        setTimeout(() => { clicked = false; }, 3000);
+      });
+    });
+  });
+</script>
+
+<div class="wrapper">
+
+  <div class="urgency">
+    <span class="dot"></span>
+    Promo de bienvenida activa hoy • Cupos de atención limitados
+  </div>
+
+  <section class="card">
+    <div class="pill">✅ WhatsApp oficial • Atención humana</div>
+
+    <div class="bono">
+      <div class="kicker">Bono de bienvenida</div>
+      <div class="big">+50%</div>
+      <div class="con-carga">con tu primera carga</div>
+      <div class="aclara">⚠️ El bono se acredita al confirmar tu carga. No entregamos fichas gratis.</div>
+    </div>
+
+    <h1 class="title">Creá tu usuario en <span class="hl">1 minuto</span></h1>
+    <p class="subtitle">Te lo damos por WhatsApp, al toque y con atención de una persona real.</p>
+
+    <a class="btn-whatsapp cta js-wa" href="#">
+      <span class="btn-text">
+        <span class="main">Quiero mi bono 🎁</span>
+        <span class="sub">Abrir WhatsApp con el mensaje listo</span>
+      </span>
+    </a>
+    <p class="micro">✅ Se abre WhatsApp con el mensaje ya escrito — solo tocá <b>Enviar</b></p>
+
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div class="tx">Tocás el botón y se abre WhatsApp con el mensaje listo.</div></div>
+      <div class="step"><div class="n">2</div><div class="tx">Te creamos el usuario y hacés tu primera carga.</div></div>
+      <div class="step"><div class="n">3</div><div class="tx">Sumás tu <b>+50% de bono</b> y empezás a jugar.</div></div>
+    </div>
+
+    <div class="bar">✔ Sin bots • ✔ Plataforma verificada • ✔ Retiros el mismo día</div>
+
+    <div class="proof"><span class="live"></span> +2.000 jugadores cargaron esta semana</div>
+
+    <div class="reviews">
+      <div class="review">
+        <div class="top"><span class="name">Marian G.</span><span class="stars">★★★★★</span></div>
+        <div class="tx">"Cargué y en 5 minutos ya estaba jugando. El retiro me llegó al toque."</div>
+      </div>
+      <div class="review">
+        <div class="top"><span class="name">Lucas R.</span><span class="stars">★★★★★</span></div>
+        <div class="tx">"Atienden re rápido y son de verdad. El bono me lo dieron con la carga."</div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat-item"><div class="stat-label">Carga mínima</div><div class="stat-value">$1.000</div></div>
+      <div class="stat-item"><div class="stat-label">Retiro mínimo</div><div class="stat-value">$2.000</div></div>
+      <div class="stat-item"><div class="stat-label">Atención</div><div class="stat-value">24 hs</div></div>
+    </div>
+
+    <div class="faq">
+      <h3>Preguntas frecuentes</h3>
+      <div class="qa"><div class="q">¿El bono es gratis?</div><div class="a">No. El bono es un <b>+50% extra sobre tu primera carga</b>: cargás y te sumamos el bono. No damos fichas sin carga.</div></div>
+      <div class="qa"><div class="q">¿Cómo cobro mis premios?</div><div class="a">Pedís el retiro por WhatsApp y te lo pagamos el mismo día (retiro mínimo $2.000).</div></div>
+    </div>
+
+    <p class="footer">+18 • Jugá con responsabilidad</p>
+  </section>
+</div>
+
+<!-- CTA fijo abajo (idéntico al principal, sin "por WhatsApp") -->
+<div class="sticky-cta">
+  <a class="cta js-wa" href="#"><span>Quiero mi bono 🎁</span></a>
+</div>
+
+</body>
+</html>

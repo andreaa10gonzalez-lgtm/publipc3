@@ -195,7 +195,7 @@
       t=b.createElement(e);t.async=!0;t.src=v;
       s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
     }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init','711179821799803');
+    fbq('init','3816173665192001');
     fbq('track','PageView');
   </script>
 </head>
@@ -208,11 +208,40 @@
 <script>
   const WHATSAPP_NUMBER = "5491121707229";   // <-- WhatsApp de este cliente
 
+  // Codigo unico de esta visita. Viaja DENTRO del mensaje de WhatsApp: cuando la
+  // persona escribe de verdad, el sistema lo cruza con este clic y recien ahi
+  // cuenta el "Cliente potencial" en Meta. Sin esto solo se mide quien toca.
+  const SLUG = 'chino';
+  const CLIC_ENDPOINT = 'https://xfizuvswwigfxdqtngwq.supabase.co/functions/v1/landing-clic';
+  const ref = (Math.random().toString(36).slice(2,8) + Math.random().toString(36).slice(2,6)).toUpperCase();
+
   // Mensaje pre-cargado: deja claro que el bono es CON la carga (evita pedidos de fichas gratis)
   const message = encodeURIComponent(
-    "Hola! Quiero crear mi usuario y llevarme el BONO de bienvenida con mi primera carga 🍀🎰"
+    "Hola! Quiero crear mi usuario y llevarme el BONO de bienvenida con mi primera carga 🍀🎰 (#" + ref + ")"
   );
   const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+
+  function getCookie(name){
+    const m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return m ? m.pop() : '';
+  }
+
+  // Guarda la huella del anuncio contra el codigo de esta visita. Nunca frena
+  // la ida a WhatsApp: si falla, el cliente igual se va al chat.
+  function registrarClic(){
+    try{
+      const qs = new URLSearchParams(location.search);
+      const fbclid = qs.get('fbclid') || '';
+      let fbc = getCookie('_fbc');
+      if(!fbc && fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+      const payload = JSON.stringify({ ref, slug: SLUG, fbclid, fbp: getCookie('_fbp'), fbc });
+      if(navigator.sendBeacon){
+        navigator.sendBeacon(CLIC_ENDPOINT, new Blob([payload], { type:'text/plain' }));
+      } else {
+        fetch(CLIC_ENDPOINT, { method:'POST', body: payload, keepalive:true });
+      }
+    }catch(e){}
+  }
 
   document.addEventListener("DOMContentLoaded", () => {
     let clicked = false;
@@ -221,6 +250,7 @@
       btn.addEventListener("click", () => {
         if (clicked) return;
         clicked = true;
+        registrarClic();                      // huella del anuncio + codigo
         fbq('trackCustom','clickwhatsapp');   // EVENTO QUE MEDÍS
         setTimeout(() => { clicked = false; }, 3000);
       });

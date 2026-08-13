@@ -295,7 +295,10 @@ src="https://www.facebook.com/tr?id=3816173665192001&ev=PageView&noscript=1"
 
       try {
         window.__waEventID = genEventID('wa');
-        if(window.fbq) fbq('trackCustom','WhatsAppClick', {
+        // Nombre del evento: el MISMO que ya usan las otras landings de este
+        // píxel. Un nombre nuevo arranca sin historial y Meta no te lo deja
+        // elegir como conversión hasta que dispare varias veces.
+        if(window.fbq) fbq('trackCustom','clickwhatsapp', {
           juego: selected || '',
           eventID: window.__waEventID,
           fbclid: qs.get('fbclid') || '',

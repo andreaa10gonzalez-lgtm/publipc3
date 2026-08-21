@@ -203,10 +203,15 @@
 <body>
 
 <!-- ==================================================================== -->
-<!--  ÚNICO DATO QUE CAMBIA POR CLIENTE: el número de WhatsApp de abajo    -->
+<!--  El número lo resuelve el panel: rota entre los WhatsApp del cliente  -->
 <!-- ==================================================================== -->
 <script>
-  const WHATSAPP_NUMBER = "5491121707229";   // <-- WhatsApp de este cliente
+  // El número NO se escribe acá: lo resuelve el panel y rota entre los WhatsApp
+  // de este cliente. Para cambiarlos, agregarlos o dar de baja uno que se cayó,
+  // se edita en el panel y todas sus landings se actualizan solas.
+  const PANEL_ENDPOINT = 'https://xfizuvswwigfxdqtngwq.supabase.co/functions/v1/landing-whatsapp';
+  const WHATSAPP_FALLBACK = "5491144167717";   // por si el panel no contesta
+  let numeroWA = WHATSAPP_FALLBACK;
 
   // Codigo unico de esta visita. Viaja DENTRO del mensaje de WhatsApp: cuando la
   // persona escribe de verdad, el sistema lo cruza con este clic y recien ahi
@@ -219,7 +224,15 @@
   const message = encodeURIComponent(
     "Hola! Quiero crear mi usuario y llevarme el BONO de bienvenida con mi primera carga 🍀🎰 (#" + ref + ")"
   );
-  const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+  const waLink = () => `https://wa.me/${numeroWA}?text=${message}`;
+  const pintar = () => document.querySelectorAll(".js-wa").forEach(b => { b.href = waLink(); });
+
+  // Le pide el número al panel apenas carga. Si tarda o falla, el botón ya tiene
+  // el de respaldo: nunca queda un link roto.
+  fetch(`${PANEL_ENDPOINT}?slug=${SLUG}`, { cache: "no-store" })
+    .then(r => r.json())
+    .then(d => { if (d && d.ok && d.whatsapp_number) { numeroWA = d.whatsapp_number; pintar(); } })
+    .catch(() => {});
 
   function getCookie(name){
     const m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
@@ -245,8 +258,8 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     let clicked = false;
+    pintar();
     document.querySelectorAll(".js-wa").forEach(btn => {
-      btn.href = waLink;
       btn.addEventListener("click", () => {
         if (clicked) return;
         clicked = true;
